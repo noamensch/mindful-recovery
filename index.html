@@ -7,7 +7,11 @@
     <meta name="theme-color" content="#1a365d">
     <title>Mindful Recovery</title>
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Fonts: English + Hebrew -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;600&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Heebo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=3">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 <body>
@@ -47,15 +51,15 @@
             <nav class="bottom-nav">
                 <button class="nav-btn active" data-screen="home-screen" aria-label="Home">
                     <span class="nav-icon">⌂</span>
-                    <span>Home</span>
+                    <span data-i18n="navHome">Home</span>
                 </button>
                 <button class="nav-btn" data-screen="library-screen" aria-label="Session library">
                     <span class="nav-icon">☰</span>
-                    <span>Sessions</span>
+                    <span data-i18n="navSessions">Sessions</span>
                 </button>
                 <button class="nav-btn" data-screen="settings-screen" aria-label="Settings">
                     <span class="nav-icon">⚙</span>
-                    <span>Settings</span>
+                    <span data-i18n="navSettings">Settings</span>
                 </button>
             </nav>
         </main>
@@ -174,15 +178,15 @@
             <nav class="bottom-nav">
                 <button class="nav-btn" data-screen="home-screen" aria-label="Home">
                     <span class="nav-icon">⌂</span>
-                    <span>Home</span>
+                    <span data-i18n="navHome">Home</span>
                 </button>
                 <button class="nav-btn active" data-screen="library-screen" aria-label="Session library">
                     <span class="nav-icon">☰</span>
-                    <span>Sessions</span>
+                    <span data-i18n="navSessions">Sessions</span>
                 </button>
                 <button class="nav-btn" data-screen="settings-screen" aria-label="Settings">
                     <span class="nav-icon">⚙</span>
-                    <span>Settings</span>
+                    <span data-i18n="navSettings">Settings</span>
                 </button>
             </nav>
         </main>
@@ -195,71 +199,82 @@
 
             <div class="settings-content">
                 <section class="settings-section">
-                    <h2>Display</h2>
+                    <h2 data-i18n="display">Display</h2>
 
                     <div class="setting-item">
-                        <label for="high-contrast">High Contrast Mode</label>
+                        <label for="high-contrast" data-i18n="highContrast">High Contrast Mode</label>
                         <input type="checkbox" id="high-contrast" class="toggle">
                     </div>
 
                     <div class="setting-item">
-                        <label for="large-text">Larger Text</label>
+                        <label for="large-text" data-i18n="largeText">Larger Text</label>
                         <input type="checkbox" id="large-text" class="toggle">
                     </div>
 
                     <div class="setting-item">
-                        <label for="reduce-motion">Reduce Motion</label>
+                        <label for="reduce-motion" data-i18n="reduceMotion">Reduce Motion</label>
                         <input type="checkbox" id="reduce-motion" class="toggle">
                     </div>
                 </section>
 
                 <section class="settings-section">
-                    <h2>Audio</h2>
+                    <h2 data-i18n="audio">Audio</h2>
 
                     <div class="setting-item">
-                        <label for="voice-speed">Voice Speed</label>
+                        <label for="voice-speed" data-i18n="voiceSpeed">Voice Speed</label>
                         <select id="voice-speed" class="select">
-                            <option value="slow">Slow</option>
-                            <option value="normal" selected>Normal</option>
-                            <option value="very-slow">Very Slow</option>
+                            <option value="slow" data-i18n="speedSlow">Slow</option>
+                            <option value="normal" selected data-i18n="speedNormal">Normal</option>
+                            <option value="very-slow" data-i18n="speedVerySlow">Very Slow</option>
                         </select>
                     </div>
 
                     <div class="setting-item">
-                        <label for="use-voice">Speak Instructions</label>
+                        <label for="use-voice" data-i18n="speakInstructions">Speak Instructions</label>
                         <input type="checkbox" id="use-voice" class="toggle" checked>
                     </div>
                 </section>
 
                 <section class="settings-section">
-                    <h2>Reminders</h2>
+                    <h2 data-i18n="language">Language</h2>
 
                     <div class="setting-item">
-                        <label for="reminder-enabled">Daily Reminder</label>
+                        <div class="lang-selector" id="lang-selector">
+                            <button class="lang-btn active" data-lang="en">English</button>
+                            <button class="lang-btn" data-lang="he">עברית</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="settings-section">
+                    <h2 data-i18n="reminders">Reminders</h2>
+
+                    <div class="setting-item">
+                        <label for="reminder-enabled" data-i18n="dailyReminder">Daily Reminder</label>
                         <input type="checkbox" id="reminder-enabled" class="toggle">
                     </div>
 
                     <div class="setting-item" id="reminder-time-setting" style="display: none;">
-                        <label for="reminder-time">Reminder Time</label>
+                        <label for="reminder-time" data-i18n="reminderTime">Reminder Time</label>
                         <input type="time" id="reminder-time" class="time-input" value="09:00">
                     </div>
 
                     <div class="setting-item" id="reminder-routine-setting" style="display: none;">
-                        <label for="reminder-routine">Link to Routine</label>
+                        <label for="reminder-routine" data-i18n="linkToRoutine">Link to Routine</label>
                         <select id="reminder-routine" class="select">
-                            <option value="">Just use time</option>
-                            <option value="morning">After waking up</option>
-                            <option value="breakfast">After breakfast</option>
-                            <option value="lunch">After lunch</option>
-                            <option value="medication">After medication</option>
-                            <option value="evening">Before bed</option>
+                            <option value="" data-i18n="routineNone">Just use time</option>
+                            <option value="morning" data-i18n="routineMorning">After waking up</option>
+                            <option value="breakfast" data-i18n="routineBreakfast">After breakfast</option>
+                            <option value="lunch" data-i18n="routineLunch">After lunch</option>
+                            <option value="medication" data-i18n="routineMedication">After medication</option>
+                            <option value="evening" data-i18n="routineEvening">Before bed</option>
                         </select>
                     </div>
                 </section>
 
                 <section class="settings-section">
-                    <h2>Data</h2>
-                    <button id="clear-data" class="secondary-button">
+                    <h2 data-i18n="data">Data</h2>
+                    <button id="clear-data" class="secondary-button" data-i18n="clearProgress">
                         Clear All Progress
                     </button>
                 </section>
@@ -268,21 +283,22 @@
             <nav class="bottom-nav">
                 <button class="nav-btn" data-screen="home-screen" aria-label="Home">
                     <span class="nav-icon">⌂</span>
-                    <span>Home</span>
+                    <span data-i18n="navHome">Home</span>
                 </button>
                 <button class="nav-btn" data-screen="library-screen" aria-label="Session library">
                     <span class="nav-icon">☰</span>
-                    <span>Sessions</span>
+                    <span data-i18n="navSessions">Sessions</span>
                 </button>
                 <button class="nav-btn active" data-screen="settings-screen" aria-label="Settings">
                     <span class="nav-icon">⚙</span>
-                    <span>Settings</span>
+                    <span data-i18n="navSettings">Settings</span>
                 </button>
             </nav>
         </main>
     </div>
 
-    <script src="sessions.js"></script>
-    <script src="app.js"></script>
+    <script src="i18n.js?v=3"></script>
+    <script src="sessions.js?v=4"></script>
+    <script src="app.js?v=3"></script>
 </body>
 </html>

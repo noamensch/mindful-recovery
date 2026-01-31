@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Speech Test</title>
+</head>
+<body>
+    <h1>Simple Speech Test</h1>
+    <button onclick="speakEnglish()">Test English</button>
+    <button onclick="speakHebrew()">Test Hebrew</button>
+    <button onclick="listAllVoices()">List Voices</button>
+    <pre id="output"></pre>
+
+    <script>
+        function log(msg) {
+            document.getElementById('output').textContent += msg + '\n';
+            console.log(msg);
+        }
+
+        function speakEnglish() {
+            log('Trying English...');
+            var u = new SpeechSynthesisUtterance('Hello, this is a test');
+            u.lang = 'en-US';
+            u.onend = function() { log('English finished'); };
+            u.onerror = function(e) { log('English error: ' + e.error); };
+            speechSynthesis.speak(u);
+        }
+
+        function speakHebrew() {
+            log('Trying Hebrew...');
+            var u = new SpeechSynthesisUtterance('שלום, זו בדיקה');
+            u.lang = 'he-IL';
+
+            // Try to find Hebrew voice
+            var voices = speechSynthesis.getVoices();
+            var heVoice = voices.find(function(v) { return v.lang.indexOf('he') >= 0; });
+            if (heVoice) {
+                u.voice = heVoice;
+                log('Found Hebrew voice: ' + heVoice.name);
+            } else {
+                log('NO HEBREW VOICE FOUND - Hebrew will not work!');
+            }
+
+            u.onend = function() { log('Hebrew finished'); };
+            u.onerror = function(e) { log('Hebrew error: ' + e.error); };
+            speechSynthesis.speak(u);
+        }
+
+        function listAllVoices() {
+            var voices = speechSynthesis.getVoices();
+            log('Total voices: ' + voices.length);
+            voices.forEach(function(v) {
+                log('  ' + v.lang + ' - ' + v.name);
+            });
+        }
+
+        // Load voices
+        speechSynthesis.onvoiceschanged = function() {
+            log('Voices loaded: ' + speechSynthesis.getVoices().length);
+        };
+
+        log('Page loaded. Click buttons to test.');
+        setTimeout(function() {
+            log('Voices available: ' + speechSynthesis.getVoices().length);
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,7 +1,6 @@
 /**
  * Mindful Recovery - Main Application
- *
- * A mindfulness app designed for people with TBI
+ * With internationalization (i18n) support for English and Hebrew
  */
 
 (function () {
@@ -14,6 +13,7 @@
     const state = {
         currentScreen: 'home-screen',
         currentSession: null,
+        currentSessionId: null,
         sessionTimer: null,
         stepIndex: 0,
         isPaused: false,
@@ -28,11 +28,12 @@
             reminderEnabled: false,
             reminderTime: '09:00',
             reminderRoutine: '',
+            language: 'en',
         },
         progress: {
             totalSessions: 0,
             completedSessionIds: [],
-            weeklyHistory: [], // Array of { date: 'YYYY-MM-DD', count: number }
+            weeklyHistory: [],
         }
     };
 
@@ -79,6 +80,130 @@
     }
 
     // ========================================
+    // Internationalization
+    // ========================================
+
+    function updateUILanguage() {
+        const lang = getCurrentLang();
+
+        // Update ALL elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const translation = t(key);
+            if (translation && translation !== key) {
+                el.textContent = translation;
+            }
+        });
+
+        // Update specific UI elements that don't have data-i18n
+        document.querySelector('.home-header h1').textContent = t('appName');
+        document.querySelector('.tagline').textContent = t('tagline');
+        document.querySelector('#ground-me-btn').innerHTML = `
+            <span class="ground-icon"></span>
+            ${t('groundMeNow')}
+        `;
+        document.querySelector('.sessions-section h2').textContent = t('todaysPractice');
+
+        // Progress labels
+        document.querySelectorAll('.progress-label')[0].textContent = t('totalSessions');
+        document.querySelectorAll('.progress-label')[1].textContent = t('thisWeek');
+
+        // Player
+        document.getElementById('player-back').textContent = t('back');
+        document.getElementById('player-stop').textContent = t('stop');
+
+        // Grounding
+        document.querySelector('.grounding-title').textContent = t('groundingTitle');
+        document.getElementById('grounding-back').textContent = t('back');
+
+        // Complete screen
+        document.querySelector('.complete-title').textContent = t('wellDone');
+
+        // Library
+        document.querySelector('.library-header h1').textContent = t('allSessions');
+        const librarySections = document.querySelectorAll('.library-section');
+        librarySections[0].querySelector('h2').textContent = t('microSessions');
+        librarySections[0].querySelector('.section-desc').textContent = t('microDesc');
+        librarySections[1].querySelector('h2').textContent = t('bodyAwareness');
+        librarySections[1].querySelector('.section-desc').textContent = t('bodyDesc');
+        librarySections[2].querySelector('h2').textContent = t('grounding');
+        librarySections[2].querySelector('.section-desc').textContent = t('groundingDesc');
+
+        // Settings header
+        document.querySelector('.settings-header h1').textContent = t('settings');
+
+        // Update language selector buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+
+        // Re-render dynamic content
+        renderHome();
+        renderLibrary();
+    }
+
+    function switchLanguage(lang) {
+        state.settings.language = lang;
+        setLanguage(lang);
+        saveSettings();
+
+        // Force RTL update on both html and body
+        const isRTL = lang === 'he';
+        document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+        document.documentElement.lang = lang;
+        document.body.dir = isRTL ? 'rtl' : 'ltr';
+        document.body.classList.toggle('rtl', isRTL);
+
+        console.log('Language switched to:', lang, 'RTL:', isRTL);
+        console.log('document.dir:', document.documentElement.dir);
+        console.log('body.classList:', document.body.className);
+
+        // Update all UI with new language (this also re-renders home and library)
+        updateUILanguage();
+
+        // Apply RTL styles directly to elements
+        applyRTLStyles(isRTL);
+    }
+
+    // Apply RTL styles directly via JavaScript (CSS fallback)
+    // Note: In RTL context, flex-direction: row already goes right-to-left
+    // So we use 'row' for RTL (not 'row-reverse' which would flip it back!)
+    function applyRTLStyles(isRTL) {
+        console.log('applyRTLStyles called with isRTL:', isRTL);
+
+        // Session cards - in RTL, 'row' goes right-to-left naturally
+        const sessionCards = document.querySelectorAll('.session-card');
+        console.log('Found session cards:', sessionCards.length);
+        sessionCards.forEach(card => {
+            // Use 'row' for both - RTL context handles the direction
+            card.style.flexDirection = 'row';
+        });
+
+        // Session info text alignment
+        document.querySelectorAll('.session-info').forEach(info => {
+            info.style.textAlign = isRTL ? 'right' : 'left';
+        });
+
+        // Setting items - in RTL, 'row' goes right-to-left naturally
+        const settingItems = document.querySelectorAll('.setting-item');
+        console.log('Found setting items:', settingItems.length);
+        settingItems.forEach(item => {
+            // Use 'row' for both - RTL context handles the direction
+            item.style.flexDirection = 'row';
+        });
+
+        // Setting labels text alignment
+        document.querySelectorAll('.setting-item label').forEach(label => {
+            label.style.textAlign = isRTL ? 'right' : 'left';
+        });
+
+        // Section headers
+        document.querySelectorAll('.sessions-section h2, .settings-section h2, .library-section h2').forEach(h2 => {
+            h2.style.textAlign = isRTL ? 'right' : 'left';
+        });
+    }
+
+    // ========================================
     // Screen Navigation
     // ========================================
 
@@ -100,14 +225,41 @@
     }
 
     // ========================================
+    // Session Data with Translations
+    // ========================================
+
+    function getTranslatedSession(sessionId) {
+        const baseSession = getSessionById(sessionId);
+        if (!baseSession) return null;
+
+        const sessionTranslation = t(`sessions.${sessionId}`);
+
+        // Create translated session object
+        return {
+            ...baseSession,
+            title: sessionTranslation.title || baseSession.title,
+            description: sessionTranslation.description || baseSession.description,
+            steps: baseSession.steps.map((step, index) => ({
+                ...step,
+                text: sessionTranslation.steps?.[index] || step.text,
+            })),
+        };
+    }
+
+    function getTranslatedGroundingSteps() {
+        return t('groundingSteps') || GROUNDING_STEPS;
+    }
+
+    // ========================================
     // Session Player
     // ========================================
 
     function startSession(sessionId) {
-        const session = getSessionById(sessionId);
+        const session = getTranslatedSession(sessionId);
         if (!session) return;
 
         state.currentSession = session;
+        state.currentSessionId = sessionId;  // Store session ID for audio files
         state.stepIndex = 0;
         state.isPaused = false;
         state.startTime = Date.now();
@@ -140,9 +292,9 @@
         // Update instruction text
         document.getElementById('player-instruction').textContent = step.text;
 
-        // Speak instruction if enabled
-        if (state.settings.useVoice) {
-            speak(step.text);
+        // Play audio if enabled
+        if (state.settings.useVoice && state.currentSessionId) {
+            playSessionAudio(state.currentSessionId, state.stepIndex);
         }
 
         // Update progress bar
@@ -163,13 +315,13 @@
 
         if (state.isPaused) {
             clearTimeout(state.sessionTimer);
-            pauseBtn.textContent = '▶';
+            pauseBtn.textContent = t('play');
             pauseBtn.setAttribute('aria-label', 'Resume');
 
             // Stop breathing animation
             document.getElementById('breathing-circle').classList.remove('animating');
         } else {
-            pauseBtn.textContent = '❚❚';
+            pauseBtn.textContent = t('pause');
             pauseBtn.setAttribute('aria-label', 'Pause');
 
             // Resume breathing animation
@@ -191,7 +343,9 @@
 
     function stopSession() {
         clearTimeout(state.sessionTimer);
+        stopAudio();  // Stop any playing audio
         state.currentSession = null;
+        state.currentSessionId = null;
         state.stepIndex = 0;
         state.isPaused = false;
 
@@ -200,7 +354,7 @@
 
         // Reset pause button
         const pauseBtn = document.getElementById('player-pause');
-        pauseBtn.textContent = '❚❚';
+        pauseBtn.textContent = t('pause');
         pauseBtn.setAttribute('aria-label', 'Pause');
 
         showScreen('home-screen');
@@ -236,15 +390,12 @@
         // Show completion screen
         document.getElementById('complete-total-count').textContent = state.progress.totalSessions;
 
-        const messages = [
-            'Every practice counts.',
-            'You showed up for yourself today.',
-            'Small steps lead to big changes.',
-            'You\'re building a healthy habit.',
-            'Nicely done.',
-        ];
+        const messages = t('completeMessages');
         const randomMessage = messages[Math.floor(Math.random() * messages.length)];
         document.getElementById('complete-message').textContent = randomMessage;
+
+        // Update button text
+        document.getElementById('complete-done').textContent = t('done');
 
         showScreen('complete-screen');
     }
@@ -287,7 +438,8 @@
     }
 
     function showGroundingStep() {
-        const step = GROUNDING_STEPS[state.groundingStep];
+        const steps = getTranslatedGroundingSteps();
+        const step = steps[state.groundingStep];
         if (!step) {
             finishGrounding();
             return;
@@ -296,25 +448,26 @@
         document.getElementById('grounding-instruction').textContent = step.instruction;
         document.getElementById('grounding-detail').textContent = step.detail;
         document.getElementById('grounding-step').textContent =
-            `${state.groundingStep + 1} of ${GROUNDING_STEPS.length}`;
+            `${state.groundingStep + 1} ${t('stepOf')} ${steps.length}`;
 
         // Update button text for last step
         const nextBtn = document.getElementById('grounding-next');
-        if (state.groundingStep === GROUNDING_STEPS.length - 1) {
-            nextBtn.textContent = 'Done';
+        if (state.groundingStep === steps.length - 1) {
+            nextBtn.textContent = t('done');
         } else {
-            nextBtn.textContent = 'Next';
+            nextBtn.textContent = t('next');
         }
 
-        // Speak if enabled
+        // Play audio if enabled
         if (state.settings.useVoice) {
-            speak(step.instruction);
+            playGroundingAudio(state.groundingStep);
         }
     }
 
     function nextGroundingStep() {
+        const steps = getTranslatedGroundingSteps();
         state.groundingStep++;
-        if (state.groundingStep >= GROUNDING_STEPS.length) {
+        if (state.groundingStep >= steps.length) {
             finishGrounding();
         } else {
             showGroundingStep();
@@ -326,30 +479,93 @@
     }
 
     // ========================================
-    // Text-to-Speech
+    // Audio Playback (Pre-recorded audio files)
     // ========================================
 
-    function speak(text) {
-        if (!('speechSynthesis' in window)) return;
+    let currentAudio = null;
 
-        // Cancel any ongoing speech
-        window.speechSynthesis.cancel();
+    // Get audio file path for a session step
+    function getAudioPath(sessionId, stepIndex) {
+        const lang = getCurrentLang();
+        return `audio/${lang}/${sessionId}-${stepIndex}.mp3`;
+    }
 
-        const utterance = new SpeechSynthesisUtterance(text);
+    // Get audio file path for grounding step
+    function getGroundingAudioPath(stepIndex) {
+        const lang = getCurrentLang();
+        return `audio/${lang}/grounding-${stepIndex}.mp3`;
+    }
 
-        // Set speed based on settings
-        switch (state.settings.voiceSpeed) {
-            case 'very-slow':
-                utterance.rate = 0.6;
-                break;
-            case 'slow':
-                utterance.rate = 0.8;
-                break;
-            default:
-                utterance.rate = 0.9; // Slightly slower than default for clarity
+    // Play audio file
+    function playAudio(audioPath) {
+        return new Promise((resolve, reject) => {
+            if (!state.settings.useVoice) {
+                resolve();
+                return;
+            }
+
+            // Stop any currently playing audio
+            stopAudio();
+
+            currentAudio = new Audio(audioPath);
+
+            // Set playback rate based on settings
+            switch (state.settings.voiceSpeed) {
+                case 'very-slow':
+                    currentAudio.playbackRate = 0.75;
+                    break;
+                case 'slow':
+                    currentAudio.playbackRate = 0.85;
+                    break;
+                default:
+                    currentAudio.playbackRate = 1.0;
+            }
+
+            currentAudio.onended = () => {
+                console.log('Audio ended:', audioPath);
+                resolve();
+            };
+
+            currentAudio.onerror = (e) => {
+                console.warn('Audio file not found:', audioPath);
+                resolve(); // Don't reject - just continue without audio
+            };
+
+            currentAudio.play().catch(e => {
+                console.warn('Could not play audio:', e.message);
+                resolve();
+            });
+        });
+    }
+
+    // Stop currently playing audio
+    function stopAudio() {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            currentAudio = null;
         }
+    }
 
-        window.speechSynthesis.speak(utterance);
+    // Play session step audio
+    function playSessionAudio(sessionId, stepIndex) {
+        const audioPath = getAudioPath(sessionId, stepIndex);
+        return playAudio(audioPath);
+    }
+
+    // Play grounding step audio
+    function playGroundingAudio(stepIndex) {
+        const audioPath = getGroundingAudioPath(stepIndex);
+        return playAudio(audioPath);
+    }
+
+    // Legacy speak function - now uses audio files
+    function speak(text, sessionId, stepIndex) {
+        if (sessionId !== undefined && stepIndex !== undefined) {
+            playSessionAudio(sessionId, stepIndex);
+        }
+        // If no session info provided, we can't play audio
+        // (grounding uses playGroundingAudio directly)
     }
 
     // ========================================
@@ -357,14 +573,17 @@
     // ========================================
 
     function renderSessionCard(session) {
+        // Get translated session data
+        const translatedSession = getTranslatedSession(session.id);
+
         const card = document.createElement('button');
         card.className = 'session-card';
-        card.setAttribute('aria-label', `${session.title}, ${formatDuration(session.duration)}`);
+        card.setAttribute('aria-label', `${translatedSession.title}, ${formatDuration(session.duration)}`);
         card.onclick = () => startSession(session.id);
 
         card.innerHTML = `
             <div class="session-info">
-                <div class="session-title">${session.title}</div>
+                <div class="session-title">${translatedSession.title}</div>
                 <div class="session-duration">${formatDuration(session.duration)}</div>
             </div>
             <div class="session-play" aria-hidden="true">▶</div>
@@ -384,6 +603,10 @@
 
         // Update progress display
         updateProgressDisplay();
+
+        // Apply RTL styles to newly rendered elements
+        const isRTL = getCurrentLang() === 'he';
+        applyRTLStyles(isRTL);
     }
 
     function renderLibrary() {
@@ -407,6 +630,10 @@
         SESSIONS.grounding.forEach(session => {
             groundingList.appendChild(renderSessionCard(session));
         });
+
+        // Apply RTL styles to newly rendered elements
+        const isRTL = getCurrentLang() === 'he';
+        applyRTLStyles(isRTL);
     }
 
     function updateProgressDisplay() {
@@ -455,6 +682,11 @@
         const showReminders = state.settings.reminderEnabled;
         document.getElementById('reminder-time-setting').style.display = showReminders ? 'flex' : 'none';
         document.getElementById('reminder-routine-setting').style.display = showReminders ? 'flex' : 'none';
+
+        // Language
+        if (state.settings.language) {
+            setLanguage(state.settings.language);
+        }
     }
 
     function initSettings() {
@@ -491,13 +723,19 @@
             saveSettings();
         });
 
+        // Language selector
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchLanguage(btn.dataset.lang);
+            });
+        });
+
         // Reminder enabled toggle
         document.getElementById('reminder-enabled').addEventListener('change', (e) => {
             state.settings.reminderEnabled = e.target.checked;
             applySettings();
             saveSettings();
 
-            // Request notification permission if enabled
             if (e.target.checked && 'Notification' in window) {
                 Notification.requestPermission();
             }
@@ -517,7 +755,7 @@
 
         // Clear data button
         document.getElementById('clear-data').addEventListener('click', () => {
-            if (confirm('This will clear all your progress. Are you sure?')) {
+            if (confirm(t('clearConfirm'))) {
                 state.progress = {
                     totalSessions: 0,
                     completedSessionIds: [],
@@ -602,14 +840,39 @@
     // ========================================
 
     function init() {
+        // Load saved data
         loadSettings();
         loadProgress();
+
+        // Initialize language
+        if (state.settings.language) {
+            setLanguage(state.settings.language);
+            // Ensure RTL is applied
+            const isRTL = state.settings.language === 'he';
+            document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+            document.body.classList.toggle('rtl', isRTL);
+        } else {
+            loadLanguagePreference();
+            state.settings.language = getCurrentLang();
+        }
+
+        // Apply settings and render
         applySettings();
         initSettings();
         initEventListeners();
-        renderHome();
-        renderLibrary();
+
+        // Update UI with current language
+        updateUILanguage();
+
+        // Apply RTL styles after everything is rendered
+        const isRTL = getCurrentLang() === 'he';
+        applyRTLStyles(isRTL);
+
+        // Register service worker
         registerServiceWorker();
+
+        // Log ready
+        console.log('App initialized. Using pre-recorded audio files for narration.');
     }
 
     // Start the app

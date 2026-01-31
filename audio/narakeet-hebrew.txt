@@ -1,0 +1,340 @@
+(voice: Carmit)
+(speed: slow)
+
+# Session: one-breath
+
+(output: he/one-breath-0.mp3)
+בואו ניקח נשימה אחת יחד.
+(pause: 500ms)
+
+(output: he/one-breath-1.mp3)
+שאפו לאט...
+(pause: 500ms)
+
+(output: he/one-breath-2.mp3)
+ונשפו לאט...
+(pause: 500ms)
+
+(output: he/one-breath-3.mp3)
+זהו. כל הכבוד.
+(pause: 500ms)
+
+# Session: three-breaths
+
+(output: he/three-breaths-0.mp3)
+בואו ניקח שלוש נשימות יחד.
+(pause: 500ms)
+
+(output: he/three-breaths-1.mp3)
+נשימה ראשונה פנימה...
+(pause: 500ms)
+
+(output: he/three-breaths-2.mp3)
+והחוצה...
+(pause: 500ms)
+
+(output: he/three-breaths-3.mp3)
+נשימה שנייה פנימה...
+(pause: 500ms)
+
+(output: he/three-breaths-4.mp3)
+והחוצה...
+(pause: 500ms)
+
+(output: he/three-breaths-5.mp3)
+נשימה שלישית פנימה...
+(pause: 500ms)
+
+(output: he/three-breaths-6.mp3)
+והחוצה...
+(pause: 500ms)
+
+(output: he/three-breaths-7.mp3)
+כל הכבוד.
+(pause: 500ms)
+
+# Session: feel-your-hands
+
+(output: he/feel-your-hands-0.mp3)
+הניחו את הידיים על הברכיים.
+(pause: 500ms)
+
+(output: he/feel-your-hands-1.mp3)
+הרגישו את משקל הידיים.
+(pause: 500ms)
+
+(output: he/feel-your-hands-2.mp3)
+שימו לב אם הן חמות או קרירות.
+(pause: 500ms)
+
+(output: he/feel-your-hands-3.mp3)
+הרגישו עקצוץ או שקט.
+(pause: 500ms)
+
+(output: he/feel-your-hands-4.mp3)
+פשוט שימו לב. אין צורך לשנות דבר.
+(pause: 500ms)
+
+(output: he/feel-your-hands-5.mp3)
+כל הכבוד.
+(pause: 500ms)
+
+# Session: feet-on-floor
+
+(output: he/feet-on-floor-0.mp3)
+הרגישו את כפות הרגליים על הרצפה.
+(pause: 500ms)
+
+(output: he/feet-on-floor-1.mp3)
+לחצו אותן בעדינות לתוך הקרקע.
+(pause: 500ms)
+
+(output: he/feet-on-floor-2.mp3)
+שימו לב לרצפה שתומכת בכם.
+(pause: 500ms)
+
+(output: he/feet-on-floor-3.mp3)
+אתם כאן. אתם בטוחים.
+(pause: 500ms)
+
+(output: he/feet-on-floor-4.mp3)
+כל הכבוד.
+(pause: 500ms)
+
+# Session: listen
+
+(output: he/listen-0.mp3)
+עצמו את העיניים אם נוח לכם.
+(pause: 500ms)
+
+(output: he/listen-1.mp3)
+הקשיבו לצליל אחד סביבכם.
+(pause: 500ms)
+
+(output: he/listen-2.mp3)
+רק צליל אחד. כל צליל.
+(pause: 500ms)
+
+(output: he/listen-3.mp3)
+עקבו אחריו. שימו לב אליו.
+(pause: 500ms)
+
+(output: he/listen-4.mp3)
+תנו לצלילים אחרים להיעלם.
+(pause: 500ms)
+
+(output: he/listen-5.mp3)
+רק הצליל הזה.
+(pause: 500ms)
+
+(output: he/listen-6.mp3)
+עכשיו שחררו אותו.
+(pause: 500ms)
+
+(output: he/listen-7.mp3)
+פתחו את העיניים כשמוכנים.
+(pause: 500ms)
+
+(output: he/listen-8.mp3)
+כל הכבוד.
+(pause: 500ms)
+
+# Session: shoulder-drop
+
+(output: he/shoulder-drop-0.mp3)
+שימו לב לכתפיים שלכם עכשיו.
+(pause: 500ms)
+
+(output: he/shoulder-drop-1.mp3)
+האם הן מורמות? מתוחות?
+(pause: 500ms)
+
+(output: he/shoulder-drop-2.mp3)
+קחו נשימה פנימה...
+(pause: 500ms)
+
+(output: he/shoulder-drop-3.mp3)
+כשאתם נושפים, תנו לכתפיים לרדת.
+(pause: 500ms)
+
+(output: he/shoulder-drop-4.mp3)
+תנו להן להיות כבדות ורכות.
+(pause: 500ms)
+
+(output: he/shoulder-drop-5.mp3)
+שימו לב להבדל.
+(pause: 500ms)
+
+(output: he/shoulder-drop-6.mp3)
+כל הכבוד.
+(pause: 500ms)
+
+# Session: face-relax
+
+(output: he/face-relax-0.mp3)
+שימו לב לפנים שלכם.
+(pause: 500ms)
+
+(output: he/face-relax-1.mp3)
+רככו את המצח.
+(pause: 500ms)
+
+(output: he/face-relax-2.mp3)
+תנו לגבות להירגע.
+(pause: 500ms)
+
+(output: he/face-relax-3.mp3)
+שחררו את הלסת.
+(pause: 500ms)
+
+(output: he/face-relax-4.mp3)
+תנו ללשון לנוח ברכות.
+(pause: 500ms)
+
+(output: he/face-relax-5.mp3)
+הרגישו את כל הפנים נרגעות.
+(pause: 500ms)
+
+(output: he/face-relax-6.mp3)
+כל הכבוד.
+(pause: 500ms)
+
+# Session: simple-body-scan
+
+(output: he/simple-body-scan-0.mp3)
+בואו נבדוק איך הגוף מרגיש.
+(pause: 500ms)
+
+(output: he/simple-body-scan-1.mp3)
+שימו לב לראש.
+(pause: 500ms)
+
+(output: he/simple-body-scan-2.mp3)
+שימו לב לכתפיים.
+(pause: 500ms)
+
+(output: he/simple-body-scan-3.mp3)
+שימו לב לזרועות ולידיים.
+(pause: 500ms)
+
+(output: he/simple-body-scan-4.mp3)
+שימו לב לחזה.
+(pause: 500ms)
+
+(output: he/simple-body-scan-5.mp3)
+שימו לב לבטן.
+(pause: 500ms)
+
+(output: he/simple-body-scan-6.mp3)
+שימו לב לאגן.
+(pause: 500ms)
+
+(output: he/simple-body-scan-7.mp3)
+שימו לב לרגליים.
+(pause: 500ms)
+
+(output: he/simple-body-scan-8.mp3)
+שימו לב לכפות הרגליים.
+(pause: 500ms)
+
+(output: he/simple-body-scan-9.mp3)
+כל הגוף שלכם, כאן איתכם.
+(pause: 500ms)
+
+(output: he/simple-body-scan-10.mp3)
+כל הכבוד.
+(pause: 500ms)
+
+# Session: five-senses
+
+(output: he/five-senses-0.mp3)
+בואו נעגן אתכם ברגע הנוכחי.
+(pause: 500ms)
+
+(output: he/five-senses-1.mp3)
+הסתכלו סביב. מצאו 5 דברים שאתם רואים.
+(pause: 500ms)
+
+(output: he/five-senses-2.mp3)
+טוב. עכשיו מצאו 4 דברים שאתם יכולים לגעת.
+(pause: 500ms)
+
+(output: he/five-senses-3.mp3)
+שימו לב ל-3 דברים שאתם שומעים.
+(pause: 500ms)
+
+(output: he/five-senses-4.mp3)
+מצאו 2 דברים שאתם מריחים.
+(pause: 500ms)
+
+(output: he/five-senses-5.mp3)
+שימו לב לדבר אחד שאתם טועמים.
+(pause: 500ms)
+
+(output: he/five-senses-6.mp3)
+אתם כאן. אתם נוכחים.
+(pause: 500ms)
+
+(output: he/five-senses-7.mp3)
+כל הכבוד.
+(pause: 500ms)
+
+# Session: anchor
+
+(output: he/anchor-0.mp3)
+לחצו את כפות הרגליים לרצפה.
+(pause: 500ms)
+
+(output: he/anchor-1.mp3)
+הרגישו את הכיסא תומך בכם.
+(pause: 500ms)
+
+(output: he/anchor-2.mp3)
+הניחו את היד על הבטן.
+(pause: 500ms)
+
+(output: he/anchor-3.mp3)
+הרגישו אותה עולה כששואפים...
+(pause: 500ms)
+
+(output: he/anchor-4.mp3)
+ויורדת כשנושפים...
+(pause: 500ms)
+
+(output: he/anchor-5.mp3)
+זה העוגן שלכם.
+(pause: 500ms)
+
+(output: he/anchor-6.mp3)
+תוכלו לחזור לכאן בכל עת.
+(pause: 500ms)
+
+(output: he/anchor-7.mp3)
+כל הכבוד.
+(pause: 500ms)
+
+# Grounding Exercise
+
+(output: he/grounding-0.mp3)
+קחו נשימה איטית. פנימה דרך האף... החוצה דרך הפה.
+(pause: 500ms)
+
+(output: he/grounding-1.mp3)
+הרגישו את כפות הרגליים על הקרקע. לחצו אותן לרצפה. הרגישו את התמיכה.
+(pause: 500ms)
+
+(output: he/grounding-2.mp3)
+הסתכלו סביבכם. תנו שם ל-3 דברים שאתם רואים עכשיו.
+(pause: 500ms)
+
+(output: he/grounding-3.mp3)
+הקשיבו. אילו צלילים אתם שומעים? קרובים או רחוקים?
+(pause: 500ms)
+
+(output: he/grounding-4.mp3)
+געו במשהו קרוב. שימו לב למרקם. חלק? מחוספס? חם? קריר?
+(pause: 500ms)
+
+(output: he/grounding-5.mp3)
+אתם כאן. אתם בטוחים. קחו עוד נשימה איטית אחת.
+(pause: 500ms)

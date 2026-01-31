@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Test - Mindful Recovery</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 { color: #333; }
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #6b7c6b;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #5a6b5a; }
+        button.secondary {
+            background: #c97b63;
+        }
+        button.secondary:hover { background: #a85d47; }
+        #status {
+            padding: 10px;
+            background: #e8efe8;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        #voices {
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .voice-item {
+            padding: 4px 8px;
+            border-bottom: 1px solid #eee;
+        }
+        .voice-item.hebrew { background: #fff3cd; }
+        .voice-item.english { background: #d4edda; }
+        textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔊 Speech Synthesis Test</h1>
+
+    <div class="section">
+        <h2>1. Check Browser Support</h2>
+        <div id="status">Checking...</div>
+    </div>
+
+    <div class="section">
+        <h2>2. Available Voices</h2>
+        <button onclick="loadVoices()">Reload Voices</button>
+        <div id="voices"></div>
+    </div>
+
+    <div class="section">
+        <h2>3. Test English Speech</h2>
+        <textarea id="en-text">Hello. This is a test of the English speech synthesis. Take a deep breath.</textarea>
+        <br><br>
+        <button onclick="testEnglish()">🔊 Speak English</button>
+        <button onclick="stopSpeech()">⏹️ Stop</button>
+    </div>
+
+    <div class="section">
+        <h2>4. Test Hebrew Speech</h2>
+        <textarea id="he-text" dir="rtl">שלום. זו בדיקה של הדיבור בעברית. קחו נשימה עמוקה.</textarea>
+        <br><br>
+        <button class="secondary" onclick="testHebrew()">🔊 Speak Hebrew</button>
+        <button onclick="stopSpeech()">⏹️ Stop</button>
+        <p id="hebrew-status"></p>
+    </div>
+
+    <div class="section">
+        <h2>5. Debug Info</h2>
+        <button onclick="showDebug()">Show Debug Info</button>
+        <pre id="debug"></pre>
+    </div>
+
+    <script>
+        let allVoices = [];
+
+        // Check browser support
+        function checkSupport() {
+            const status = document.getElementById('status');
+            if (!('speechSynthesis' in window)) {
+                status.innerHTML = '❌ Speech synthesis NOT supported in this browser!';
+                status.style.background = '#f8d7da';
+                return false;
+            }
+            status.innerHTML = '✅ Speech synthesis is supported!';
+            status.style.background = '#d4edda';
+            return true;
+        }
+
+        // Load and display voices
+        function loadVoices() {
+            allVoices = window.speechSynthesis.getVoices();
+            const container = document.getElementById('voices');
+
+            if (allVoices.length === 0) {
+                container.innerHTML = '<p>No voices loaded yet. Click "Reload Voices" again.</p>';
+                return;
+            }
+
+            let html = '<p><strong>Total voices: ' + allVoices.length + '</strong></p>';
+
+            // Hebrew voices
+            const hebrewVoices = allVoices.filter(v => v.lang.includes('he'));
+            html += '<p><strong>Hebrew voices: ' + hebrewVoices.length + '</strong></p>';
+            hebrewVoices.forEach(v => {
+                html += '<div class="voice-item hebrew">' + v.name + ' (' + v.lang + ') ' + (v.localService ? '📱' : '☁️') + '</div>';
+            });
+
+            if (hebrewVoices.length === 0) {
+                html += '<div class="voice-item" style="background:#f8d7da;">⚠️ No Hebrew voices found!</div>';
+                document.getElementById('hebrew-status').innerHTML =
+                    '<strong style="color:red;">Hebrew voice not available on this device.</strong><br>' +
+                    'To add Hebrew voice:<br>' +
+                    '• Windows: Settings → Time & Language → Speech → Add voices<br>' +
+                    '• Mac: System Preferences → Accessibility → Spoken Content → Manage Voices';
+            }
+
+            // English voices (first 5)
+            const englishVoices = allVoices.filter(v => v.lang.startsWith('en'));
+            html += '<p><strong>English voices: ' + englishVoices.length + '</strong></p>';
+            englishVoices.slice(0, 5).forEach(v => {
+                html += '<div class="voice-item english">' + v.name + ' (' + v.lang + ') ' + (v.localService ? '📱' : '☁️') + '</div>';
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Test English
+        function testEnglish() {
+            const text = document.getElementById('en-text').value;
+            speak(text, 'en-US');
+        }
+
+        // Test Hebrew
+        function testHebrew() {
+            const text = document.getElementById('he-text').value;
+            speak(text, 'he-IL');
+        }
+
+        // Speak text
+        function speak(text, lang) {
+            window.speechSynthesis.cancel();
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            utterance.rate = 0.9;
+            utterance.pitch = 1.0;
+            utterance.volume = 1.0;
+
+            // Find best voice
+            const voices = window.speechSynthesis.getVoices();
+            let voice = null;
+
+            if (lang.startsWith('he')) {
+                voice = voices.find(v => v.lang === 'he-IL') ||
+                        voices.find(v => v.lang.startsWith('he'));
+            } else {
+                voice = voices.find(v => v.lang === 'en-US') ||
+                        voices.find(v => v.lang.startsWith('en'));
+            }
+
+            if (voice) {
+                utterance.voice = voice;
+                console.log('Using voice:', voice.name, voice.lang);
+            } else {
+                console.warn('No voice found for', lang);
+            }
+
+            utterance.onstart = () => console.log('Speech started');
+            utterance.onend = () => console.log('Speech ended');
+            utterance.onerror = (e) => {
+                console.error('Speech error:', e.error);
+                alert('Speech error: ' + e.error);
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Stop speech
+        function stopSpeech() {
+            window.speechSynthesis.cancel();
+        }
+
+        // Show debug info
+        function showDebug() {
+            const debug = document.getElementById('debug');
+            const voices = window.speechSynthesis.getVoices();
+
+            debug.textContent = JSON.stringify({
+                supported: 'speechSynthesis' in window,
+                speaking: window.speechSynthesis?.speaking,
+                paused: window.speechSynthesis?.paused,
+                pending: window.speechSynthesis?.pending,
+                voiceCount: voices.length,
+                hebrewVoices: voices.filter(v => v.lang.includes('he')).map(v => ({name: v.name, lang: v.lang})),
+                platform: navigator.platform,
+                userAgent: navigator.userAgent.substring(0, 100)
+            }, null, 2);
+        }
+
+        // Initialize
+        checkSupport();
+
+        // Load voices (may need to wait)
+        if ('speechSynthesis' in window) {
+            loadVoices();
+            window.speechSynthesis.onvoiceschanged = loadVoices;
+
+            // Try again after delay (Chrome needs this)
+            setTimeout(loadVoices, 500);
+            setTimeout(loadVoices, 1000);
+        }
+    </script>
+</body>
+</html>

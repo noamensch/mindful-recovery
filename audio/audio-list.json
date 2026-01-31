@@ -1,0 +1,228 @@
+{
+  "sessions": {
+    "one-breath": {
+      "en": [
+        "Let's take one breath together.",
+        "Breathe in slowly...",
+        "And breathe out slowly...",
+        "That's it. Well done."
+      ],
+      "he": [
+        "בואו ניקח נשימה אחת יחד.",
+        "שאפו לאט...",
+        "ונשפו לאט...",
+        "זהו. כל הכבוד."
+      ]
+    },
+    "three-breaths": {
+      "en": [
+        "Let's take three breaths together.",
+        "First breath in...",
+        "And out...",
+        "Second breath in...",
+        "And out...",
+        "Third breath in...",
+        "And out...",
+        "Well done."
+      ],
+      "he": [
+        "בואו ניקח שלוש נשימות יחד.",
+        "נשימה ראשונה פנימה...",
+        "והחוצה...",
+        "נשימה שנייה פנימה...",
+        "והחוצה...",
+        "נשימה שלישית פנימה...",
+        "והחוצה...",
+        "כל הכבוד."
+      ]
+    },
+    "feel-your-hands": {
+      "en": [
+        "Rest your hands in your lap.",
+        "Feel the weight of your hands.",
+        "Notice if they feel warm or cool.",
+        "Feel any tingling or stillness.",
+        "Just notice. No need to change anything.",
+        "Well done."
+      ],
+      "he": [
+        "הניחו את הידיים על הברכיים.",
+        "הרגישו את משקל הידיים.",
+        "שימו לב אם הן חמות או קרירות.",
+        "הרגישו עקצוץ או שקט.",
+        "פשוט שימו לב. אין צורך לשנות דבר.",
+        "כל הכבוד."
+      ]
+    },
+    "feet-on-floor": {
+      "en": [
+        "Feel your feet on the floor.",
+        "Press them gently into the ground.",
+        "Notice the floor supporting you.",
+        "You are here. You are safe.",
+        "Well done."
+      ],
+      "he": [
+        "הרגישו את כפות הרגליים על הרצפה.",
+        "לחצו אותן בעדינות לתוך הקרקע.",
+        "שימו לב לרצפה שתומכת בכם.",
+        "אתם כאן. אתם בטוחים.",
+        "כל הכבוד."
+      ]
+    },
+    "listen": {
+      "en": [
+        "Close your eyes if you like.",
+        "Listen for one sound around you.",
+        "Just one sound. Any sound.",
+        "Follow it. Notice it.",
+        "Let other sounds fade away.",
+        "Just this one sound.",
+        "Now let it go.",
+        "Open your eyes when ready.",
+        "Well done."
+      ],
+      "he": [
+        "עצמו את העיניים אם נוח לכם.",
+        "הקשיבו לצליל אחד סביבכם.",
+        "רק צליל אחד. כל צליל.",
+        "עקבו אחריו. שימו לב אליו.",
+        "תנו לצלילים אחרים להיעלם.",
+        "רק הצליל הזה.",
+        "עכשיו שחררו אותו.",
+        "פתחו את העיניים כשמוכנים.",
+        "כל הכבוד."
+      ]
+    },
+    "shoulder-drop": {
+      "en": [
+        "Notice your shoulders right now.",
+        "Are they lifted? Tight?",
+        "Take a breath in...",
+        "As you breathe out, let your shoulders drop.",
+        "Let them be heavy and soft.",
+        "Notice the difference.",
+        "Well done."
+      ],
+      "he": [
+        "שימו לב לכתפיים שלכם עכשיו.",
+        "האם הן מורמות? מתוחות?",
+        "קחו נשימה פנימה...",
+        "כשאתם נושפים, תנו לכתפיים לרדת.",
+        "תנו להן להיות כבדות ורכות.",
+        "שימו לב להבדל.",
+        "כל הכבוד."
+      ]
+    },
+    "face-relax": {
+      "en": [
+        "Notice your face.",
+        "Soften your forehead.",
+        "Let your eyebrows relax.",
+        "Unclench your jaw.",
+        "Let your tongue rest softly.",
+        "Feel your whole face relax.",
+        "Well done."
+      ],
+      "he": [
+        "שימו לב לפנים שלכם.",
+        "רככו את המצח.",
+        "תנו לגבות להירגע.",
+        "שחררו את הלסת.",
+        "תנו ללשון לנוח ברכות.",
+        "הרגישו את כל הפנים נרגעות.",
+        "כל הכבוד."
+      ]
+    },
+    "simple-body-scan": {
+      "en": [
+        "Let's check in with your body.",
+        "Notice your head.",
+        "Notice your shoulders.",
+        "Notice your arms and hands.",
+        "Notice your chest.",
+        "Notice your belly.",
+        "Notice your hips.",
+        "Notice your legs.",
+        "Notice your feet.",
+        "Your whole body, here with you.",
+        "Well done."
+      ],
+      "he": [
+        "בואו נבדוק איך הגוף מרגיש.",
+        "שימו לב לראש.",
+        "שימו לב לכתפיים.",
+        "שימו לב לזרועות ולידיים.",
+        "שימו לב לחזה.",
+        "שימו לב לבטן.",
+        "שימו לב לאגן.",
+        "שימו לב לרגליים.",
+        "שימו לב לכפות הרגליים.",
+        "כל הגוף שלכם, כאן איתכם.",
+        "כל הכבוד."
+      ]
+    },
+    "five-senses": {
+      "en": [
+        "Let's ground you in the present moment.",
+        "Look around. Find 5 things you can see.",
+        "Good. Now find 4 things you can touch.",
+        "Notice 3 things you can hear.",
+        "Find 2 things you can smell.",
+        "Notice 1 thing you can taste.",
+        "You are here. You are present.",
+        "Well done."
+      ],
+      "he": [
+        "בואו נעגן אתכם ברגע הנוכחי.",
+        "הסתכלו סביב. מצאו 5 דברים שאתם רואים.",
+        "טוב. עכשיו מצאו 4 דברים שאתם יכולים לגעת.",
+        "שימו לב ל-3 דברים שאתם שומעים.",
+        "מצאו 2 דברים שאתם מריחים.",
+        "שימו לב לדבר אחד שאתם טועמים.",
+        "אתם כאן. אתם נוכחים.",
+        "כל הכבוד."
+      ]
+    },
+    "anchor": {
+      "en": [
+        "Press your feet into the floor.",
+        "Feel the chair supporting you.",
+        "Place your hand on your belly.",
+        "Feel it rise as you breathe in...",
+        "And fall as you breathe out...",
+        "This is your anchor.",
+        "You can return here anytime.",
+        "Well done."
+      ],
+      "he": [
+        "לחצו את כפות הרגליים לרצפה.",
+        "הרגישו את הכיסא תומך בכם.",
+        "הניחו את היד על הבטן.",
+        "הרגישו אותה עולה כששואפים...",
+        "ויורדת כשנושפים...",
+        "זה העוגן שלכם.",
+        "תוכלו לחזור לכאן בכל עת.",
+        "כל הכבוד."
+      ]
+    }
+  },
+  "grounding": {
+    "en": [
+      "Take a slow breath. In through your nose... out through your mouth.",
+      "Feel your feet on the ground. Press them into the floor. Feel the support.",
+      "Look around you. Name 3 things you can see right now.",
+      "Listen. What sounds do you hear? Near or far?",
+      "Touch something nearby. Notice its texture. Smooth? Rough? Warm? Cool?",
+      "You are here. You are safe. Take one more slow breath."
+    ],
+    "he": [
+      "קחו נשימה איטית. פנימה דרך האף... החוצה דרך הפה.",
+      "הרגישו את כפות הרגליים על הקרקע. לחצו אותן לרצפה. הרגישו את התמיכה.",
+      "הסתכלו סביבכם. תנו שם ל-3 דברים שאתם רואים עכשיו.",
+      "הקשיבו. אילו צלילים אתם שומעים? קרובים או רחוקים?",
+      "געו במשהו קרוב. שימו לב למרקם. חלק? מחוספס? חם? קריר?",
+      "אתם כאן. אתם בטוחים. קחו עוד נשימה איטית אחת."
+    ]
+  }
+}

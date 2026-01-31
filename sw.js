@@ -10,6 +10,7 @@ const ASSETS_TO_CACHE = [
     '/styles.css',
     '/app.js',
     '/sessions.js',
+    '/i18n.js',
     '/manifest.json',
 ];
 

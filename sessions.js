@@ -227,15 +227,24 @@ function getSessionById(id) {
     return getAllSessions().find(s => s.id === id);
 }
 
-// Helper function to format duration
+// Helper function to format duration (with i18n support)
 function formatDuration(seconds) {
+    const lang = typeof getCurrentLang === 'function' ? getCurrentLang() : 'en';
+
+    const labels = {
+        en: { sec: 'sec', min: 'min' },
+        he: { sec: 'שנ׳', min: 'דק׳' }
+    };
+
+    const l = labels[lang] || labels.en;
+
     if (seconds < 60) {
-        return `${seconds} sec`;
+        return `${seconds} ${l.sec}`;
     }
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     if (secs === 0) {
-        return `${mins} min`;
+        return `${mins} ${l.min}`;
     }
     return `${mins}:${secs.toString().padStart(2, '0')}`;
 }

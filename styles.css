@@ -1174,3 +1174,228 @@ a:focus-visible {
     white-space: nowrap;
     border: 0;
 }
+
+/* ========================================
+   RTL (Right-to-Left) Support for Hebrew
+   ======================================== */
+
+/* Base RTL direction */
+html[dir="rtl"],
+body.rtl {
+    direction: rtl;
+}
+
+/* Hebrew-friendly font stack */
+body.rtl {
+    --font-body: 'Heebo', 'Segoe UI', Tahoma, Arial, sans-serif;
+    --font-display: 'Frank Ruhl Libre', 'Fraunces', Georgia, serif;
+}
+
+/* ====== Home Screen RTL ====== */
+
+body.rtl .home-header {
+    text-align: center;
+}
+
+body.rtl .quick-actions {
+    direction: rtl;
+}
+
+body.rtl .ground-me-button {
+    flex-direction: row; /* In RTL context, row goes right-to-left */
+}
+
+body.rtl .sessions-section {
+    text-align: right;
+}
+
+body.rtl .sessions-section h2 {
+    text-align: right;
+}
+
+/* Session cards RTL - in RTL context, row already goes right-to-left */
+body.rtl .session-card,
+[dir="rtl"] .session-card,
+html[dir="rtl"] .session-card {
+    flex-direction: row !important;
+}
+
+body.rtl .session-info,
+[dir="rtl"] .session-info,
+html[dir="rtl"] .session-info {
+    text-align: right !important;
+}
+
+/* Progress section */
+body.rtl .progress-section {
+    direction: rtl;
+}
+
+body.rtl .progress-card {
+    direction: rtl;
+}
+
+body.rtl .progress-label {
+    text-align: center;
+}
+
+/* ====== Player Screen RTL ====== */
+
+body.rtl .player-header {
+    flex-direction: row; /* In RTL context, row goes right-to-left */
+}
+
+body.rtl .back-button {
+    flex-direction: row; /* In RTL context, row goes right-to-left */
+}
+
+body.rtl .player-content {
+    direction: rtl;
+}
+
+body.rtl .instruction-text {
+    direction: rtl;
+    text-align: center;
+}
+
+body.rtl .player-progress {
+    direction: rtl;
+}
+
+body.rtl .progress-bar {
+    direction: rtl;
+}
+
+body.rtl .progress-fill {
+    float: right;
+}
+
+body.rtl .player-controls {
+    flex-direction: row; /* In RTL context, row goes right-to-left */
+}
+
+/* ====== Grounding Screen RTL ====== */
+
+body.rtl .grounding-header {
+    direction: rtl;
+    text-align: right;
+}
+
+body.rtl .grounding-content {
+    direction: rtl;
+}
+
+body.rtl .grounding-instruction {
+    direction: rtl;
+    text-align: center;
+}
+
+body.rtl .grounding-detail {
+    direction: rtl;
+    text-align: center;
+}
+
+/* ====== Complete Screen RTL ====== */
+
+body.rtl .complete-content {
+    direction: rtl;
+}
+
+body.rtl .complete-message {
+    direction: rtl;
+}
+
+body.rtl .complete-total {
+    direction: rtl;
+}
+
+/* ====== Library Screen RTL ====== */
+
+body.rtl .library-header {
+    text-align: right;
+}
+
+body.rtl .library-header h1 {
+    text-align: right;
+}
+
+body.rtl .library-section {
+    direction: rtl;
+    text-align: right;
+}
+
+body.rtl .library-section h2 {
+    text-align: right;
+}
+
+body.rtl .section-desc {
+    text-align: right;
+}
+
+/* ====== Settings Screen RTL ====== */
+
+body.rtl .settings-header {
+    text-align: right;
+}
+
+body.rtl .settings-header h1 {
+    text-align: right;
+}
+
+body.rtl .settings-section {
+    direction: rtl;
+}
+
+body.rtl .settings-section h2 {
+    text-align: right;
+}
+
+body.rtl .setting-item {
+    flex-direction: row; /* In RTL context, row already goes right-to-left */
+}
+
+body.rtl .setting-item label {
+    text-align: right;
+}
+
+body.rtl .lang-selector {
+    flex-direction: row; /* In RTL context, row goes right-to-left */
+}
+
+/* ====== Bottom Navigation RTL ====== */
+
+body.rtl .bottom-nav {
+    direction: rtl;
+}
+
+body.rtl .nav-btn {
+    direction: rtl;
+}
+
+/* Language selector styling */
+.lang-selector {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.lang-btn {
+    padding: var(--space-xs) var(--space-md);
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+    min-height: var(--touch-target);
+}
+
+.lang-btn:hover {
+    border-color: var(--color-primary-light);
+}
+
+.lang-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}

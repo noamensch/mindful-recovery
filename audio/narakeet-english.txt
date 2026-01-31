@@ -1,0 +1,340 @@
+(voice: Amy)
+(speed: slow)
+
+# Session: one-breath
+
+(output: en/one-breath-0.mp3)
+Let's take one breath together.
+(pause: 500ms)
+
+(output: en/one-breath-1.mp3)
+Breathe in slowly...
+(pause: 500ms)
+
+(output: en/one-breath-2.mp3)
+And breathe out slowly...
+(pause: 500ms)
+
+(output: en/one-breath-3.mp3)
+That's it. Well done.
+(pause: 500ms)
+
+# Session: three-breaths
+
+(output: en/three-breaths-0.mp3)
+Let's take three breaths together.
+(pause: 500ms)
+
+(output: en/three-breaths-1.mp3)
+First breath in...
+(pause: 500ms)
+
+(output: en/three-breaths-2.mp3)
+And out...
+(pause: 500ms)
+
+(output: en/three-breaths-3.mp3)
+Second breath in...
+(pause: 500ms)
+
+(output: en/three-breaths-4.mp3)
+And out...
+(pause: 500ms)
+
+(output: en/three-breaths-5.mp3)
+Third breath in...
+(pause: 500ms)
+
+(output: en/three-breaths-6.mp3)
+And out...
+(pause: 500ms)
+
+(output: en/three-breaths-7.mp3)
+Well done.
+(pause: 500ms)
+
+# Session: feel-your-hands
+
+(output: en/feel-your-hands-0.mp3)
+Rest your hands in your lap.
+(pause: 500ms)
+
+(output: en/feel-your-hands-1.mp3)
+Feel the weight of your hands.
+(pause: 500ms)
+
+(output: en/feel-your-hands-2.mp3)
+Notice if they feel warm or cool.
+(pause: 500ms)
+
+(output: en/feel-your-hands-3.mp3)
+Feel any tingling or stillness.
+(pause: 500ms)
+
+(output: en/feel-your-hands-4.mp3)
+Just notice. No need to change anything.
+(pause: 500ms)
+
+(output: en/feel-your-hands-5.mp3)
+Well done.
+(pause: 500ms)
+
+# Session: feet-on-floor
+
+(output: en/feet-on-floor-0.mp3)
+Feel your feet on the floor.
+(pause: 500ms)
+
+(output: en/feet-on-floor-1.mp3)
+Press them gently into the ground.
+(pause: 500ms)
+
+(output: en/feet-on-floor-2.mp3)
+Notice the floor supporting you.
+(pause: 500ms)
+
+(output: en/feet-on-floor-3.mp3)
+You are here. You are safe.
+(pause: 500ms)
+
+(output: en/feet-on-floor-4.mp3)
+Well done.
+(pause: 500ms)
+
+# Session: listen
+
+(output: en/listen-0.mp3)
+Close your eyes if you like.
+(pause: 500ms)
+
+(output: en/listen-1.mp3)
+Listen for one sound around you.
+(pause: 500ms)
+
+(output: en/listen-2.mp3)
+Just one sound. Any sound.
+(pause: 500ms)
+
+(output: en/listen-3.mp3)
+Follow it. Notice it.
+(pause: 500ms)
+
+(output: en/listen-4.mp3)
+Let other sounds fade away.
+(pause: 500ms)
+
+(output: en/listen-5.mp3)
+Just this one sound.
+(pause: 500ms)
+
+(output: en/listen-6.mp3)
+Now let it go.
+(pause: 500ms)
+
+(output: en/listen-7.mp3)
+Open your eyes when ready.
+(pause: 500ms)
+
+(output: en/listen-8.mp3)
+Well done.
+(pause: 500ms)
+
+# Session: shoulder-drop
+
+(output: en/shoulder-drop-0.mp3)
+Notice your shoulders right now.
+(pause: 500ms)
+
+(output: en/shoulder-drop-1.mp3)
+Are they lifted? Tight?
+(pause: 500ms)
+
+(output: en/shoulder-drop-2.mp3)
+Take a breath in...
+(pause: 500ms)
+
+(output: en/shoulder-drop-3.mp3)
+As you breathe out, let your shoulders drop.
+(pause: 500ms)
+
+(output: en/shoulder-drop-4.mp3)
+Let them be heavy and soft.
+(pause: 500ms)
+
+(output: en/shoulder-drop-5.mp3)
+Notice the difference.
+(pause: 500ms)
+
+(output: en/shoulder-drop-6.mp3)
+Well done.
+(pause: 500ms)
+
+# Session: face-relax
+
+(output: en/face-relax-0.mp3)
+Notice your face.
+(pause: 500ms)
+
+(output: en/face-relax-1.mp3)
+Soften your forehead.
+(pause: 500ms)
+
+(output: en/face-relax-2.mp3)
+Let your eyebrows relax.
+(pause: 500ms)
+
+(output: en/face-relax-3.mp3)
+Unclench your jaw.
+(pause: 500ms)
+
+(output: en/face-relax-4.mp3)
+Let your tongue rest softly.
+(pause: 500ms)
+
+(output: en/face-relax-5.mp3)
+Feel your whole face relax.
+(pause: 500ms)
+
+(output: en/face-relax-6.mp3)
+Well done.
+(pause: 500ms)
+
+# Session: simple-body-scan
+
+(output: en/simple-body-scan-0.mp3)
+Let's check in with your body.
+(pause: 500ms)
+
+(output: en/simple-body-scan-1.mp3)
+Notice your head.
+(pause: 500ms)
+
+(output: en/simple-body-scan-2.mp3)
+Notice your shoulders.
+(pause: 500ms)
+
+(output: en/simple-body-scan-3.mp3)
+Notice your arms and hands.
+(pause: 500ms)
+
+(output: en/simple-body-scan-4.mp3)
+Notice your chest.
+(pause: 500ms)
+
+(output: en/simple-body-scan-5.mp3)
+Notice your belly.
+(pause: 500ms)
+
+(output: en/simple-body-scan-6.mp3)
+Notice your hips.
+(pause: 500ms)
+
+(output: en/simple-body-scan-7.mp3)
+Notice your legs.
+(pause: 500ms)
+
+(output: en/simple-body-scan-8.mp3)
+Notice your feet.
+(pause: 500ms)
+
+(output: en/simple-body-scan-9.mp3)
+Your whole body, here with you.
+(pause: 500ms)
+
+(output: en/simple-body-scan-10.mp3)
+Well done.
+(pause: 500ms)
+
+# Session: five-senses
+
+(output: en/five-senses-0.mp3)
+Let's ground you in the present moment.
+(pause: 500ms)
+
+(output: en/five-senses-1.mp3)
+Look around. Find 5 things you can see.
+(pause: 500ms)
+
+(output: en/five-senses-2.mp3)
+Good. Now find 4 things you can touch.
+(pause: 500ms)
+
+(output: en/five-senses-3.mp3)
+Notice 3 things you can hear.
+(pause: 500ms)
+
+(output: en/five-senses-4.mp3)
+Find 2 things you can smell.
+(pause: 500ms)
+
+(output: en/five-senses-5.mp3)
+Notice 1 thing you can taste.
+(pause: 500ms)
+
+(output: en/five-senses-6.mp3)
+You are here. You are present.
+(pause: 500ms)
+
+(output: en/five-senses-7.mp3)
+Well done.
+(pause: 500ms)
+
+# Session: anchor
+
+(output: en/anchor-0.mp3)
+Press your feet into the floor.
+(pause: 500ms)
+
+(output: en/anchor-1.mp3)
+Feel the chair supporting you.
+(pause: 500ms)
+
+(output: en/anchor-2.mp3)
+Place your hand on your belly.
+(pause: 500ms)
+
+(output: en/anchor-3.mp3)
+Feel it rise as you breathe in...
+(pause: 500ms)
+
+(output: en/anchor-4.mp3)
+And fall as you breathe out...
+(pause: 500ms)
+
+(output: en/anchor-5.mp3)
+This is your anchor.
+(pause: 500ms)
+
+(output: en/anchor-6.mp3)
+You can return here anytime.
+(pause: 500ms)
+
+(output: en/anchor-7.mp3)
+Well done.
+(pause: 500ms)
+
+# Grounding Exercise
+
+(output: en/grounding-0.mp3)
+Take a slow breath. In through your nose... out through your mouth.
+(pause: 500ms)
+
+(output: en/grounding-1.mp3)
+Feel your feet on the ground. Press them into the floor. Feel the support.
+(pause: 500ms)
+
+(output: en/grounding-2.mp3)
+Look around you. Name 3 things you can see right now.
+(pause: 500ms)
+
+(output: en/grounding-3.mp3)
+Listen. What sounds do you hear? Near or far?
+(pause: 500ms)
+
+(output: en/grounding-4.mp3)
+Touch something nearby. Notice its texture. Smooth? Rough? Warm? Cool?
+(pause: 500ms)
+
+(output: en/grounding-5.mp3)
+You are here. You are safe. Take one more slow breath.
+(pause: 500ms)
