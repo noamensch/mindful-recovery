@@ -1,0 +1,27 @@
+{
+    "name": "Mindful Recovery",
+    "short_name": "Mindful",
+    "description": "Mindfulness app designed for people recovering from head trauma",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f7fafc",
+    "theme_color": "#1a365d",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["health", "medical", "lifestyle"],
+    "lang": "en",
+    "dir": "ltr"
+}

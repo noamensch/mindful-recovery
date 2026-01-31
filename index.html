@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mindfulness app designed for people recovering from head trauma">
+    <meta name="theme-color" content="#1a365d">
+    <title>Mindful Recovery</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+    <div id="app">
+        <!-- Home Screen -->
+        <main id="home-screen" class="screen active">
+            <header class="home-header">
+                <h1>Mindful Recovery</h1>
+                <p class="tagline">One breath at a time</p>
+            </header>
+
+            <section class="quick-actions">
+                <button id="ground-me-btn" class="ground-me-button" aria-label="Ground me now - emergency grounding exercise">
+                    <span class="ground-icon">●</span>
+                    Ground Me Now
+                </button>
+            </section>
+
+            <section class="sessions-section">
+                <h2>Today's Practice</h2>
+                <div id="sessions-list" class="sessions-list">
+                    <!-- Sessions populated by JS -->
+                </div>
+            </section>
+
+            <section class="progress-section">
+                <div class="progress-card">
+                    <span class="progress-number" id="total-sessions">0</span>
+                    <span class="progress-label">total sessions</span>
+                </div>
+                <div class="progress-card">
+                    <span class="progress-number" id="this-week">0</span>
+                    <span class="progress-label">this week</span>
+                </div>
+            </section>
+
+            <nav class="bottom-nav">
+                <button class="nav-btn active" data-screen="home-screen" aria-label="Home">
+                    <span class="nav-icon">⌂</span>
+                    <span>Home</span>
+                </button>
+                <button class="nav-btn" data-screen="library-screen" aria-label="Session library">
+                    <span class="nav-icon">☰</span>
+                    <span>Sessions</span>
+                </button>
+                <button class="nav-btn" data-screen="settings-screen" aria-label="Settings">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </button>
+            </nav>
+        </main>
+
+        <!-- Session Player Screen -->
+        <main id="player-screen" class="screen">
+            <header class="player-header">
+                <button id="player-back" class="back-button" aria-label="Go back">
+                    ← Back
+                </button>
+                <span id="player-duration" class="duration-badge">1 min</span>
+            </header>
+
+            <div class="player-content">
+                <h1 id="player-title" class="player-title">Session Title</h1>
+
+                <div id="breathing-circle" class="breathing-circle" aria-hidden="true">
+                    <div class="circle-inner"></div>
+                </div>
+
+                <p id="player-instruction" class="instruction-text">
+                    Instruction will appear here
+                </p>
+
+                <div class="player-progress">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                    <span id="time-remaining" class="time-remaining">0:00</span>
+                </div>
+            </div>
+
+            <div class="player-controls">
+                <button id="player-pause" class="control-button pause-button" aria-label="Pause">
+                    ❚❚
+                </button>
+                <button id="player-stop" class="control-button stop-button" aria-label="Stop and exit">
+                    Stop
+                </button>
+            </div>
+        </main>
+
+        <!-- Grounding Screen -->
+        <main id="grounding-screen" class="screen">
+            <header class="grounding-header">
+                <button id="grounding-back" class="back-button" aria-label="Go back">
+                    ← Back
+                </button>
+            </header>
+
+            <div class="grounding-content">
+                <h1 class="grounding-title">Let's Ground Together</h1>
+
+                <div id="grounding-exercise" class="grounding-exercise">
+                    <p id="grounding-instruction" class="grounding-instruction">
+                        Take a slow breath...
+                    </p>
+                    <p id="grounding-detail" class="grounding-detail"></p>
+                </div>
+
+                <div class="grounding-progress">
+                    <span id="grounding-step" class="step-indicator">1 of 6</span>
+                </div>
+            </div>
+
+            <div class="grounding-controls">
+                <button id="grounding-next" class="control-button next-button">
+                    Next
+                </button>
+            </div>
+        </main>
+
+        <!-- Session Complete Screen -->
+        <main id="complete-screen" class="screen">
+            <div class="complete-content">
+                <div class="complete-icon">✓</div>
+                <h1 class="complete-title">Well Done</h1>
+                <p class="complete-message" id="complete-message">
+                    You completed a mindfulness session.
+                </p>
+                <p class="complete-total">
+                    Total sessions: <strong id="complete-total-count">0</strong>
+                </p>
+                <button id="complete-done" class="primary-button">
+                    Done
+                </button>
+            </div>
+        </main>
+
+        <!-- Library Screen -->
+        <main id="library-screen" class="screen">
+            <header class="library-header">
+                <h1>All Sessions</h1>
+            </header>
+
+            <div class="library-content">
+                <section class="library-section">
+                    <h2>Micro Sessions</h2>
+                    <p class="section-desc">30 seconds to 2 minutes</p>
+                    <div id="micro-sessions" class="sessions-list"></div>
+                </section>
+
+                <section class="library-section">
+                    <h2>Body Awareness</h2>
+                    <p class="section-desc">Notice sensations in your body</p>
+                    <div id="body-sessions" class="sessions-list"></div>
+                </section>
+
+                <section class="library-section">
+                    <h2>Grounding</h2>
+                    <p class="section-desc">Feel present and stable</p>
+                    <div id="grounding-sessions" class="sessions-list"></div>
+                </section>
+            </div>
+
+            <nav class="bottom-nav">
+                <button class="nav-btn" data-screen="home-screen" aria-label="Home">
+                    <span class="nav-icon">⌂</span>
+                    <span>Home</span>
+                </button>
+                <button class="nav-btn active" data-screen="library-screen" aria-label="Session library">
+                    <span class="nav-icon">☰</span>
+                    <span>Sessions</span>
+                </button>
+                <button class="nav-btn" data-screen="settings-screen" aria-label="Settings">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </button>
+            </nav>
+        </main>
+
+        <!-- Settings Screen -->
+        <main id="settings-screen" class="screen">
+            <header class="settings-header">
+                <h1>Settings</h1>
+            </header>
+
+            <div class="settings-content">
+                <section class="settings-section">
+                    <h2>Display</h2>
+
+                    <div class="setting-item">
+                        <label for="high-contrast">High Contrast Mode</label>
+                        <input type="checkbox" id="high-contrast" class="toggle">
+                    </div>
+
+                    <div class="setting-item">
+                        <label for="large-text">Larger Text</label>
+                        <input type="checkbox" id="large-text" class="toggle">
+                    </div>
+
+                    <div class="setting-item">
+                        <label for="reduce-motion">Reduce Motion</label>
+                        <input type="checkbox" id="reduce-motion" class="toggle">
+                    </div>
+                </section>
+
+                <section class="settings-section">
+                    <h2>Audio</h2>
+
+                    <div class="setting-item">
+                        <label for="voice-speed">Voice Speed</label>
+                        <select id="voice-speed" class="select">
+                            <option value="slow">Slow</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="very-slow">Very Slow</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-item">
+                        <label for="use-voice">Speak Instructions</label>
+                        <input type="checkbox" id="use-voice" class="toggle" checked>
+                    </div>
+                </section>
+
+                <section class="settings-section">
+                    <h2>Reminders</h2>
+
+                    <div class="setting-item">
+                        <label for="reminder-enabled">Daily Reminder</label>
+                        <input type="checkbox" id="reminder-enabled" class="toggle">
+                    </div>
+
+                    <div class="setting-item" id="reminder-time-setting" style="display: none;">
+                        <label for="reminder-time">Reminder Time</label>
+                        <input type="time" id="reminder-time" class="time-input" value="09:00">
+                    </div>
+
+                    <div class="setting-item" id="reminder-routine-setting" style="display: none;">
+                        <label for="reminder-routine">Link to Routine</label>
+                        <select id="reminder-routine" class="select">
+                            <option value="">Just use time</option>
+                            <option value="morning">After waking up</option>
+                            <option value="breakfast">After breakfast</option>
+                            <option value="lunch">After lunch</option>
+                            <option value="medication">After medication</option>
+                            <option value="evening">Before bed</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="settings-section">
+                    <h2>Data</h2>
+                    <button id="clear-data" class="secondary-button">
+                        Clear All Progress
+                    </button>
+                </section>
+            </div>
+
+            <nav class="bottom-nav">
+                <button class="nav-btn" data-screen="home-screen" aria-label="Home">
+                    <span class="nav-icon">⌂</span>
+                    <span>Home</span>
+                </button>
+                <button class="nav-btn" data-screen="library-screen" aria-label="Session library">
+                    <span class="nav-icon">☰</span>
+                    <span>Sessions</span>
+                </button>
+                <button class="nav-btn active" data-screen="settings-screen" aria-label="Settings">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </button>
+            </nav>
+        </main>
+    </div>
+
+    <script src="sessions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
