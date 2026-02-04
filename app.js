@@ -28,7 +28,7 @@
             reminderEnabled: false,
             reminderTime: '09:00',
             reminderRoutine: '',
-            language: 'en',
+            language: 'he',
         },
         progress: {
             totalSessions: 0,

@@ -493,8 +493,8 @@ const TRANSLATIONS = {
     }
 };
 
-// Current language
-let currentLang = 'en';
+// Current language (default: Hebrew)
+let currentLang = 'he';
 
 // Get translation by key path (e.g., 'sessions.one-breath.title')
 function t(key) {
